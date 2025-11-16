@@ -14,10 +14,10 @@ WORKDIR /app
 # Install system dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        ffmpeg \
-        git \
-        perl \
-        build-essential \
+    ffmpeg \
+    git \
+    perl \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
@@ -31,5 +31,5 @@ COPY . .
 # Expose the port FastAPI runs on
 EXPOSE 5000
 
-# Start the FastAPI app with Uvicorn
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-5000}"]
+# Start the application
+CMD ["python3", "main.py"]

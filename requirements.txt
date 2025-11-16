@@ -6,3 +6,4 @@ git+https://github.com/MahmoudAshraf97/ctc-forced-aligner.git
 pydub
 requests
 kombu
+dotenv
