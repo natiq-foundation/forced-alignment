@@ -68,4 +68,8 @@ def start_consumer(consume_queue_name, consume_routing_key, rabbitmq_url, task_q
             consumer.register_callback(lambda body, message: callback(producer, body, message, task_queue))
             with consumer:
                 while True:
-                    conn.drain_events(timeout=1000)
+                    try:
+                        conn.drain_events(timeout=30)
+                    except TimeoutError:
+                        # Timeout is expected when no messages arrive - continue polling
+                        continue
