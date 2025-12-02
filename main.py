@@ -21,16 +21,16 @@ if __name__ == "__main__":
         )
 
         celery_task_name = os.environ.get(
-            "RESULT_CELERY_TASK_NAME", "forced-alignment-done"
+            "RESULT_CELERY_TASK_NAME", "forced-alignment-result"
         )
         result_queue_name = os.environ.get(
-            "RESULT_QUEUE_NAME", "forced_alignment_done"
+            "RESULT_QUEUE_NAME", "forced_alignment_result"
         )
         result_queue_exchange = os.environ.get(
-            "RESULT_QUEUE_EXCHANGE", "forced_alignment_done"
+            "RESULT_QUEUE_EXCHANGE", "forced_alignment_result"
         )
         result_queue_routing_key = os.environ.get(
-            "RESULT_QUEUE_ROUTING_KEY", "forcedalignment_done.processing"
+            "RESULT_QUEUE_ROUTING_KEY", "forcedalignment_result.processing"
         )
         s3_bucket = os.environ["AWS_S3_BUCKET"]
         s3_prefix = os.environ.get("AWS_S3_PREFIX", "")
