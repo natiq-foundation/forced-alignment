@@ -95,10 +95,10 @@ The consumer will listen for messages on the configured queue and process them a
 
 | Variable                   | Description                             | Default                           | Required |
 | -------------------------- | --------------------------------------- | --------------------------------- | -------- |
-| `RESULT_QUEUE_NAME`        | Name of the queue to publish results to | `forced_alignment_done`           | No       |
-| `RESULT_QUEUE_EXCHANGE`    | Exchange name for the result queue      | `forced_alignment_done`           | No       |
-| `RESULT_QUEUE_ROUTING_KEY` | Routing key for the result queue        | `forcedalignment_done.processing` | No       |
-| `RESULT_CELERY_TASK_NAME`  | Celery task name for result messages    | `forced-alignment-done`           | No       |
+| `RESULT_QUEUE_NAME`        | Name of the queue to publish results to | `forced_alignment_result`           | No       |
+| `RESULT_QUEUE_EXCHANGE`    | Exchange name for the result queue      | `forced_alignment_result`           | No       |
+| `RESULT_QUEUE_ROUTING_KEY` | Routing key for the result queue        | `forcedalignment_result.processing` | No       |
+| `RESULT_CELERY_TASK_NAME`  | Celery task name for result messages    | `forced-alignment-result`           | No       |
 
 ## Usage
 
@@ -186,10 +186,10 @@ export MODE=rabbitmq
 export RABBITMQ_URL=amqp://user:password@rabbitmq-host:5672//
 export CONSUME_QUEUE_NAME=forced_alignment
 export CONSUME_ROUTING_KEY=forcedalignment.processing
-export RESULT_QUEUE_NAME=forced_alignment_done
-export RESULT_QUEUE_EXCHANGE=forced_alignment_done
-export RESULT_QUEUE_ROUTING_KEY=forcedalignment_done.processing
-export RESULT_CELERY_TASK_NAME=forced-alignment-done
+export RESULT_QUEUE_NAME=forced_alignment_result
+export RESULT_QUEUE_EXCHANGE=forced_alignment_result
+export RESULT_QUEUE_ROUTING_KEY=forcedalignment_result.processing
+export RESULT_CELERY_TASK_NAME=forced-alignment-result
 python main.py
 ```
 
@@ -248,10 +248,10 @@ docker run \
   -e RABBITMQ_URL=amqp://user:password@rabbitmq-host:5672// \
   -e CONSUME_QUEUE_NAME=forced_alignment \
   -e CONSUME_ROUTING_KEY=forcedalignment.processing \
-  -e RESULT_QUEUE_NAME=forced_alignment_done \
-  -e RESULT_QUEUE_EXCHANGE=forced_alignment_done \
-  -e RESULT_QUEUE_ROUTING_KEY=forcedalignment_done.processing \
-  -e RESULT_CELERY_TASK_NAME=forced-alignment-done \
+  -e RESULT_QUEUE_NAME=forced_alignment_result \
+  -e RESULT_QUEUE_EXCHANGE=forced_alignment_result \
+  -e RESULT_QUEUE_ROUTING_KEY=forcedalignment_result.processing \
+  -e RESULT_CELERY_TASK_NAME=forced-alignment-result \
   forced-alignment
 ```
 
