@@ -69,6 +69,7 @@ def _upload_alignment_to_s3(words_timestamps, additional, s3_config: S3Config) -
 
     payload = {
         "results": words_timestamps,
+        "additional": additional,
     }
     body = json.dumps(payload).encode("utf-8")
 
@@ -101,7 +102,7 @@ def callback(prod, body, message, task_queue, s3_config: S3Config):
 
         message.ack()
 
-        return_results(task_queue, prod, s3_url, additional)
+        return_results(task_queue, prod, s3_url)
     except Exception as e:
         print(f'Error processing message: {e}')
         message.reject(requeue=False)
